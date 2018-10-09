@@ -1,5 +1,9 @@
 class PrototypesController < ApplicationController
+<<<<<<< HEAD
   before_action :set_prototype, only: :show, :edit, :update
+=======
+  before_action :set_prototype, only: [:show, :edit, :update]
+>>>>>>> master
 
   def index
     @prototypes = Prototype.all
@@ -28,6 +32,10 @@ class PrototypesController < ApplicationController
   def update
     if prototype.user_id == current_user.id
       prototype.update(prototype_params)
+<<<<<<< HEAD
+=======
+    end
+>>>>>>> master
   end
 
   private
