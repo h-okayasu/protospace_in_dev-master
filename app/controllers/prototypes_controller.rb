@@ -13,9 +13,9 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
-      redirect_to :root, notice: 'New prototype was successfully created'
+      redirect_to :root, notice: '投稿が完了しました'
     else
-      redirect_to action: :new , alert: 'New prototype was unsuccessfully created'
+      redirect_to action: :new , alert: '投稿に失敗しました'
     end
   end
 
@@ -25,7 +25,7 @@ class PrototypesController < ApplicationController
   def destroy
     if prototype.user_id == current_user.id
       prototype.destroy
-      redirect_to :root, alert: 'DELETEED prototype'
+      redirect_to :root, alert: '削除しました'
     end
   end
 
@@ -33,8 +33,9 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if prototype.user_id == current_user.id
-      prototype.update(prototype_params)
+    if @prototype.user_id == current_user.id
+      @prototype.update(prototype_params)
+      redirect_to :root, alert: '更新しました'
     end
   end
 
