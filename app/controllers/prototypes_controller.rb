@@ -23,9 +23,9 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if prototype.user_id == current_user.id
-      prototype.destroy
-      redirect_to :root, alert: '削除しました'
+    if @prototype.user_id == current_user.id
+      @prototype.destroy
+      redirect_to :root, notice: '削除しました'
     end
   end
 
