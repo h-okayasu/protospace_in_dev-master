@@ -39,16 +39,21 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-  
-  .container
-  - if current_user
-    = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
-      %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
-      %input{:type => "submit", :value => "SENT"}/
-  .comments
-    %h5 ＜Comments＞
-    - if @comments
-      - @comments.each do |comment|
-        %p
-          %storng
-            = link_to comment.user.name, "/users/#{comment.user_id}"
+  .proto-comments
+    .form
+      %h4 ＜Comments＞
+      - if @comments
+        - @comments.each do |comment|
+          %p
+            .form
+              = link_to comment.user.name, "/users/#{comment.user_id}", class: 'c-name'
+              = comment.text
+              = link_to "DELETE" ,"/prototypes/#{@comment}", method: :delete, class: 'btn btn-xs navbar-inverse btn-edit'
+
+    = render @prototype
+    / .form-group
+    /   - if current_user
+    /     = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
+    /       %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
+    /       %input{:type => "submit", :value => "COMMENT"}/
+    
