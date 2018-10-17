@@ -1,5 +1,6 @@
 $(function(){
-  $('#imgFile').change(
+
+  $('#imgTop').change(
       function () {
           if (!this.files.length) {
               return;
@@ -22,14 +23,16 @@ $(function(){
               return;
           }
 
-          var file = $(this).prop('files')[0];
+          var files = "";
+          var file = $(this).prop("files")[0];
           var fr = new FileReader();
-          $('.proto-sub-list').css('background-image', 'none');
+          $('.image-upload').css('background-image', 'none');
           fr.onload = function() {
-              $('.proto-sub-list').css('background-image', 'url(' + fr.result + ')');
+              $('.image-upload').css('background-image', 'url(' + fr.result + ')');
           }
           fr.readAsDataURL(file);
-          $(".proto-sub-list img").css('opacity', 0);
+          $(".image-upload img").css('opacity', 0);
+
       }
   );
 });
