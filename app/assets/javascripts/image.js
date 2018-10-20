@@ -17,21 +17,22 @@ $(function(){
       }
   );
 
-  $('#imgFile').change(
+  $('.imgFile').change(
       function () {
           if (!this.files.length) {
               return;
           }
 
-          var files = "";
+          var index = $(this).closest("li").index() + 1;
+          var order = 'nth-child('+ index +')'
           var file = $(this).prop("files")[0];
           var fr = new FileReader();
-          $('.image-upload').css('background-image', 'none');
+          $(".proto-sub-list li:" + order).children('.image-upload').css('background-image', 'none');
           fr.onload = function() {
-              $('.image-upload').css('background-image', 'url(' + fr.result + ')');
+              $(".list-group li:" + order).children('.image-upload').css('background-image', 'url(' + fr.result + ')');
           }
           fr.readAsDataURL(file);
-          $(".image-upload img").css('opacity', 0);
+          $(".proto-sub-list li:" + order).children(".image-upload img").css('opacity', 0);
 
       }
   );
