@@ -15,6 +15,9 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+        -# .media-right
+          -# = render 'likes/like', prototype: @prototype
+
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
@@ -56,4 +59,4 @@
     /     = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
     /       %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
     /       %input{:type => "submit", :value => "COMMENT"}/
-    
+
